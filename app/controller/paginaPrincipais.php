@@ -9,6 +9,10 @@
 		public function erroPedido(){
 			echo "erro pagina não existente";
 		}
+
+		public function perguntasFrequentes(){
+			echo file_get_contents('app/veiw/perguntasFrequentes.html');	
+		}
 	}
 
 ?>
