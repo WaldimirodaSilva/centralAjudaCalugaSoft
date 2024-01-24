@@ -4,6 +4,8 @@
   font-weight:300;
   transition:0.4s;
 }
+
+
 :root{
   --bg:#eff1f7;
   --gray:#6e7189;
@@ -40,7 +42,19 @@ body{background:var(--bg);}
 }
 .headLine span{
   font-size:1.2rem;
+  color: var(--gray);
 }
+
+div.linha{
+	background-color: #4388ff;
+	width: 100%;
+	height: 3px;
+}
+
+.contentContainer{
+  background-color: #fff;
+}
+
 /*============== MOBILE FIRST =========*/
 .menu{
   display:flex;
@@ -143,6 +157,36 @@ color:var(--secundary);}
 .box .boxFooter{
   padding:10px;
 }
+
+
+
+/*----- footer -----*/
+.footer{
+	background-color: #191e1f;
+	color: #fff;
+	padding-bottom: 20px;
+}
+
+.footer-contact p{
+	margin: 0 0 10px;
+	position: relative;
+	text-align: center;
+	justify-content: left;
+	
+}
+
+.footer article.container{
+	padding-top: 20px;
+}
+
+.footer-contact p i{
+	left: 0;
+	top: 5px;
+	color: #66b2ff;
+	margin-right: 10px;
+}
+
+
 /*========================RESPONSIVE AREA===============================*/
 @media (min-width: 760px){
   .tableHead form{width:400px;}

@@ -8,12 +8,59 @@
      <script src="app/template/js/script.js" defer></script>
    
 </head>
-<body>
+<body style="background-color: #eee;">
     <nav class="menu">
         <img src="app/template/img/logo.png">
         <span>Central de ajuda</span>
     </nav>
+    <div class="linha"></div>
+    <div class="container mt-5 mb-5">
+        <h1 class="headLine"><span>Central de apoio</span><br>
+            Soluções de softwares</h1>
+    </div>
 	<main>{{area_dinamica}}</main>
+
+
+            <!-- inicio do model Adicionar artigo-->
+        <div class="modal fade" id="cadastraArtigoModal" tabindex="-1" aria-labelledby="AdicionarArtigoModal" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="AdicionarArtigoModal">Novo Artigo</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body m-4">
+                        <span id="msgAlertaErro"></span>
+                        <form id="cad-agenda-form">
+                            <div class="form-floating mb-3">
+                                <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Título">
+                                <label for="titulo">Título</label>
+                            </div>
+                            <div class="mb-3">
+                                <input type="file" class="form-control form-control-sm" aria-label="Small file input example">
+                            </div>
+                            <div class="form-floating mb-3">
+                                    <button type="button" class="btn btn-primary container">Adicionar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- fim do model adicionar artigo -->
+
+
+    <footer class="footer">
+        <div class="linha"></div>
+       <article class="container">
+            <div class="footer-item footer-contact">
+                <p><i class="bx bx-map"></i> Cazenga, Mediateca Zé DU</p>
+                <p><i class="bx bx-phone"></i> 945056121 -- 925637234</p>
+                <p><i class="bx bx-envelope"></i> tayzla01@gmail.com</p>
+                </div>
+           </div>
+       </article>
+   </footer>
 
      <!--JS -->
  <script src="app/template/js/jquery-slim.min.js"></script>
