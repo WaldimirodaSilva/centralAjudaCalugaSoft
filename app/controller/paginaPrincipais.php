@@ -3,7 +3,7 @@
 	// Esta classe trabalha entregando que dados sera móstrada ao usúario
 	class paginaPrincipais{
 		public function home(){
-			echo file_get_contents('app/veiw/home.html');
+			echo file_get_contents('app/veiw/artigo.html');
 		}
 
 		public function erroPedido(){
