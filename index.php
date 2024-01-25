@@ -1,9 +1,17 @@
 <?php
 
-	// implamentação das classes
+	// implementação da conexao ao banco de dados
+
+	require_once 'lib/database/conexao.php';
+
+	// implamentação do core
 
 	require_once 'app/core/core.php';
+
+	// implementação dos controllers
+
 	require_once 'app/controller/paginaPrincipais.php';
+	require_once 'app/controller/crudSistema.php';
 
 	// trabalhando na entrega da página ao usúario
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22-Jan-2024 às 15:33
+-- Tempo de geração: 25-Jan-2024 às 11:45
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `artigo` (
   `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
+  `softwarePertecente` int(11) NOT NULL,
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -43,6 +44,18 @@ CREATE TABLE `passos` (
   `id` int(11) NOT NULL,
   `idArtigo` int(11) NOT NULL,
   `texto` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `softwares`
+--
+
+CREATE TABLE `softwares` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -75,6 +88,12 @@ ALTER TABLE `passos`
   ADD KEY `idArtigo` (`idArtigo`);
 
 --
+-- Índices para tabela `softwares`
+--
+ALTER TABLE `softwares`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `video`
 --
 ALTER TABLE `video`
@@ -95,6 +114,12 @@ ALTER TABLE `artigo`
 -- AUTO_INCREMENT de tabela `passos`
 --
 ALTER TABLE `passos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `softwares`
+--
+ALTER TABLE `softwares`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

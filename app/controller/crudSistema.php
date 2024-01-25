@@ -1,11 +1,11 @@
+<?php 
 
-<?php
-require_once 'lib/database/conexao.php';
+// classe para inserção dos artigos e softwares
 
-class CadastroArtigo extends conexao {
+class CadastroArtigo{
     public function cadastrarArtigo($nome, $estado) {
         try {
-            $conexao = $this->pegandoConexao();
+            $conexao = conexao::pegandoConexao();
 
             // Utilizando prepared statement para prevenir SQL injection
             $stmt = $conexao->prepare("INSERT INTO artigo (nome, estado) VALUES (:nome, :estado)");
@@ -22,10 +22,10 @@ class CadastroArtigo extends conexao {
     }
 }
 
-class CadastroPassos extends conexao {
+class CadastroPassos{
     public function cadastrarPassos($idArtigo, $texto) {
         try {
-            $conexao = $this->pegandoConexao();
+            $conexao = conexao::pegandoConexao();
 
             // Utilizando prepared statement para prevenir SQL injection
             $stmt = $conexao->prepare("INSERT INTO passo (idArtigo, texto) VALUES (:idArtigo, :texto)");
