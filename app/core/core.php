@@ -3,10 +3,18 @@
 	class core{
 		// atributo que recebe o controller a ser pedido;
 		private $controller;
+		private $acao;
 
 		// metodo que define o controller que sera trabalhado
 		public function pedindoController($paginas){
-			$this->controller = $paginas;
+			if (method_exists('paginaPrincipais', $paginas)) {
+				return 'paginaPrincipais';
+			}elseif (method_exists('crudSistema', $paginas)) {
+				return 'crudSistema';
+			}else{
+				$this->acao = 'erroPedido';
+				return 'paginaPrincipais';
+			}
 		}
 
 		// metodo para exibição dos dados da página pedida
@@ -14,19 +22,31 @@
 
 			if (!class_exists($this->controller)) {
 				$this->controller = 'paginaPrincipais';
+				$this->acao = 'erroPedido';
 			}
 
 			if (!isset($urlGet['pagina'])) {
-				$acao = 'home';
+				$this->acao = 'home';
+				$this->controller = $this->pedindoController('home');
 			}else{
-				$acao = $urlGet['pagina'];
+				$this->acao = $urlGet['pagina'];
+				$this->controller = $this->pedindoController($urlGet['pagina']);
+			} 
+
+			if (isset($urlGet['tipoCadastro']) || isset($urlGet['valor1']) || isset($urlGet['2'])){
+				$cadastroOn = true;
+				$tipoCadastro = $urlGet['tipoCadastro'];
+				$valor1 = $urlGet['valor1'];
+				$valor2 = $urlGet['valor2'];
+			}else{
+				$cadastroOn = false;
 			}
 
-			if (!method_exists($this->controller, $acao)) {
-				$acao = 'erroPedido';
+			if ($cadastroOn == true) {
+				call_user_func(array(new $this->controller,$this->acao), array('tipoCadastro' => $tipoCadastro,'valor1' => $valor1,'valor2' => $valor2));
+			}else{
+				call_user_func(array(new $this->controller,$this->acao), array());
 			}
-
-			call_user_func(array(new $this->controller,$acao), array());
 		}
 
 		// metodo que define que página sera exibida ao usúario

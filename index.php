@@ -8,6 +8,10 @@
 
 	require_once 'app/core/core.php';
 
+	// implementação das models
+
+	require_once 'app/model/entregaIdSoftware.php';
+
 	// implementação dos controllers
 
 	require_once 'app/controller/paginaPrincipais.php';
@@ -17,10 +21,9 @@
 
 	ob_start();
 
-		$core = new core();
-		$core->pedindoController('paginaPrincipais');
-		$template = $core->estrutura_pedida('principal');
+		$core = new core(); 
 		$core->start($_GET);
+		$template = $core->estrutura_pedida('principal');
 
 		$saida = ob_get_contents();
 
