@@ -6,6 +6,10 @@
 			echo file_get_contents('app/veiw/artigo.html');
 		}
 
+		public function artigo(){
+			echo file_get_contents('app/veiw/artigo.html');
+		}
+
 		public function erroPedido(){
 			echo "erro pagina não existente";
 		}
