@@ -33,20 +33,13 @@
 				$this->controller = $this->pedindoController($urlGet['pagina']);
 			} 
 
-			if (isset($urlGet['tipoCadastro']) || isset($urlGet['valor1']) || isset($urlGet['2'])){
-				$cadastroOn = true;
-				$tipoCadastro = $urlGet['tipoCadastro'];
-				$valor1 = $urlGet['valor1'];
-				$valor2 = $urlGet['valor2'];
+			if (isset($urlGet['id']) && $urlGet['id'] != null) {
+				$id = $urlGet['id'];
 			}else{
-				$cadastroOn = false;
+				$id = null;
 			}
 
-			if ($cadastroOn == true) {
-				call_user_func(array(new $this->controller,$this->acao), array('tipoCadastro' => $tipoCadastro,'valor1' => $valor1,'valor2' => $valor2));
-			}else{
-				call_user_func(array(new $this->controller,$this->acao), array());
-			}
+			call_user_func(array(new $this->controller,$this->acao), array($id));
 		}
 
 		// metodo que define que página sera exibida ao usúario

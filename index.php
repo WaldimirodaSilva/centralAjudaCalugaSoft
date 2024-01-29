@@ -10,7 +10,7 @@
 
 	// implementação das models
 
-	require_once 'app/model/entregaIdSoftware.php';
+	require_once 'app/model/insercaoDados.php';
 
 	// implementação dos controllers
 
