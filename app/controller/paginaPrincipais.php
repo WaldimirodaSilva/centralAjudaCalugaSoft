@@ -3,7 +3,24 @@
 	// Esta classe trabalha entregando que dados sera móstrada ao usúario
 	class paginaPrincipais{
 		public function home(){
-			echo file_get_contents('app/veiw/home.html');
+			try{
+
+				$colecSoftware = dadosDatabase::softwares();
+
+				$loader = new \Twig\Loader\FilesystemLoader('app/veiw');
+				$twig = new \Twig\Environment($loader);
+				$template = $twig->load('home.html');
+
+				$parametros = array();
+				$parametros['softwares'] = $colecSoftware;
+
+				$conteudo = $template->render($parametros);
+
+				echo $conteudo;
+
+			}catch(PDOException $e){
+				echo "Erro na visualização: " . $e->getMessage();
+			}
 		}
 
 		public function artigo(){

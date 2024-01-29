@@ -9,7 +9,7 @@ class crudSistema{
             // chamando a classe e o metodo que fazem a inserção dos softwares
             insercaoDados::cadastrarSoftware($_POST,$_FILES['arquivo']);
 
-            echo "inserção feita com sucesso";
+            header('Location: http://localhost/www/centralAjudaCalugaSoft/');
  
        } catch (PDOException $e) {
             return "Erro ao cadastrar software: " . $e->getMessage();

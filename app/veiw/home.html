@@ -9,56 +9,20 @@
                     <div class="boxFooter"> 
                         <a href="#" class="buttom buttom-primary" data-bs-toggle="modal" data-bs-target="#cadastraSoftwareModal">Adicionar</a>
                     </div>
-                  </div>
+                  </div> 
 
-                   <div class="col-md-4 col-lg-4 box mb-3" id="box-hover">
-                    <img src="app/template/img/logo.png" class="header">
-                    <div class="boxBody">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
-                    </div>
-                    <div class="boxFooter">
-                        <a href="?pagina=artigo" class="buttom buttom-primary">Gerir fq</a>
-                    </div>
-                  </div>
+                   {% for software in softwares %}
 
-                  <div class="col-md-4 col-lg-4 box mb-3" id="box-hover">
-                    <img src="app/template/img/logo.png" class="header">
-                    <div class="boxBody">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+                      <div class="col-md-4 col-lg-4 box mb-3" id="box-hover">
+                      <img src="app/template/img/softwares/{{software.imagem}}" class="header">
+                      <div class="boxBody">
+                          {{software.descricao}}
+                      </div>
+                      <div class="boxFooter">
+                          <a href="?pagina=artigo" class="buttom buttom-primary">Gerir fq</a>
+                      </div>
                     </div>
-                    <div class="boxFooter">
-                        <a href="artigo.html" class="buttom buttom-primary">Gerir fq</a>
-                    </div>
-                  </div>
 
-                   <div class=" col-md-4  col-lg-4 box mb-3" id="box-hover">
-                     <img src="app/template/img/logo.png" class="header">
-                    <div class="boxBody">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
-                    </div>
-                    <div class="boxFooter">
-                        <a href="artigo.html" class="buttom buttom-primary">Gerir fq</a>
-                    </div>
-                  </div>
-                  
-                  <div class=" col-md-4  col-lg-4 box mb-3" id="box-hover">
-                    <img src="app/template/img/logo.png" class="header">
-                   <div class="boxBody">
-                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
-                   </div>
-                   <div class="boxFooter">
-                       <a href="artigo.html" class="buttom buttom-primary">Gerir fq</a>
-                   </div>
-                 </div>
-
-                 <div class=" col-md-4  col-lg-4 box mb-3" id="box-hover">
-                    <img src="app/template/img/logo.png" class="header">
-                   <div class="boxBody">
-                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
-                   </div>
-                   <div class="boxFooter">
-                       <a href="artigo.html" class="buttom buttom-primary">Gerir fq</a>
-                   </div>
-                 </div>
+                   {% endfor %}
               </div>
         </section>

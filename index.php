@@ -11,11 +11,16 @@
 	// implementação das models
 
 	require_once 'app/model/insercaoDados.php';
+	require_once 'app/model/dadosDatabase.php';
 
 	// implementação dos controllers
 
 	require_once 'app/controller/paginaPrincipais.php';
 	require_once 'app/controller/crudSistema.php';
+
+	//implementação do componentes composer
+
+	require_once 'vendor/autoload.php';
 
 	// trabalhando na entrega da página ao usúario
 
