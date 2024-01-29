@@ -4,16 +4,19 @@
 	class paginaPrincipais{
 		public function home(){
 			try{
-
+				// pegando os dados no banco de dados
 				$colecSoftware = dadosDatabase::softwares();
 
+				// carregando a página com o twig
 				$loader = new \Twig\Loader\FilesystemLoader('app/veiw');
 				$twig = new \Twig\Environment($loader);
 				$template = $twig->load('home.html');
 
+				// colocando os dados do banco de dados na página
 				$parametros = array();
 				$parametros['softwares'] = $colecSoftware;
 
+				// renderizando a página para o usúario
 				$conteudo = $template->render($parametros);
 
 				echo $conteudo;

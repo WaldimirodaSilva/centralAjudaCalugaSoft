@@ -1,5 +1,6 @@
 <?php
 
+ 	//classe para ajudar na passagem do id na inserção de dados
 	class pegaId{
 		private static $id;
 
