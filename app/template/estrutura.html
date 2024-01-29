@@ -11,7 +11,8 @@
 </head>
 <body style="background-color: #eee;">
     <nav class="menu">
-        <img src="app/template/img/logo.png">
+        <a href="?pagina=home"><img src="app/template/img/logo.png"></a>
+        
         <span>Central de ajuda</span>
     </nav>
     <div class="linha"></div>
@@ -55,10 +56,7 @@
     
 
 
-<<<<<<< HEAD
             <!-- inicio do model Adicionar software-->
-=======
-            <!-- inicio do model Adicionar artigo--> 
             <div class="modal fade" id="cadastraSoftwareModal" tabindex="-1" aria-labelledby="AdicionarSoftwareModal" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -68,17 +66,13 @@
                         </div>
                         <div class="modal-body m-4">
                             <span id="msgAlertaErro"></span>
-                            <form method="POST" action="?pagina=cadastrarSoftware" enctype="multipart/form-data">
+                            <form id="myForm">
                                 <div class="form-floating mb-3">
                                     <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome">
                                     <label for="nome">Nome</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="file" name="arquivo" class="form-control" id="imagem">
-                                    <label for="nome">imagem</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <textarea type="text" name="descricao" class="form-control h-25" id="discricao" placeholder="Discrição" rows="5"></textarea>
+                                    <textarea type="text" name="discricao" class="form-control h-25" id="discricao" placeholder="Discrição" rows="5"></textarea>
                                     <label for="discricao">Discrição</label>
                                 </div>
                                 <div class="form-floating mb-3">
@@ -90,11 +84,7 @@
                 </div>
             </div>
 
-<<<<<<< HEAD
             <!-- fim do model adicionar software -->
-=======
-            <!-- fim do model adicionar artigo -->
->>>>>>> b94b2df69bbf34281b9ee1124afdc7120c8460cc
 
 
         <!-- inicio do model Adicionar passos-->
@@ -127,9 +117,10 @@
         <div class="linha"></div>
        <article class="container">
             <div class="footer-item footer-contact">
-                <p><i class="bx bx-map"></i> Cazenga, Mediateca Zé DU</p>
-                <p><i class="bx bx-phone"></i> 945056121 -- 925637234</p>
-                <p><i class="bx bx-envelope"></i> tayzla01@gmail.com</p>
+                <p><i class="bx bx-map"></i> Cazenga, Mediateca Zé DU 
+                    <i class="bx bx-phone"></i> 945056121 -- 925637234
+                    <i class="bx bx-envelope"></i> tayzla01@gmail.com</p>
+                    <p>copyright  &copy 2024 - Lorem ipsum dolor sit | consectetur adipisicing elit <a href="#">CalungaSOFT</a></p>
                 </div>
            </div>
        </article>

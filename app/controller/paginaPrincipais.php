@@ -10,6 +10,10 @@
 			echo file_get_contents('app/veiw/artigo.html');
 		} 
  
+		public function editarArtigo(){
+			echo file_get_contents('app/veiw/editarArtigo.html');
+		}
+
 		public function erroPedido(){ 
 			echo "erro pagina não existente";
 		}
