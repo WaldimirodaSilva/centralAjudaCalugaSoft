@@ -1,12 +1,13 @@
 <?php 
 
-// classe para inserção dos artigos e softwares 
+// controller que encaminha os dados de inserção
 
-class Cadastro{
+class crudSistema{
     public function cadastrarSoftware() {
        try {
             
-            insercaoDado::cadastrarSoftware();
+            // chamando a classe e o metodo que fazem a inserção dos softwares
+            insercaoDados::cadastrarSoftware($_POST,$_FILES['arquivo']);
 
             echo "inserção feita com sucesso";
  
@@ -18,7 +19,8 @@ class Cadastro{
     public function cadastrarArtigo($parametros) {
         try {
             
-            insercaoDado::cadastrarArtigo();
+            // chamando a classe e o metodo que fazem a inserção dos artigos
+            insercaoDados::cadastrarArtigo();
 
             echo "inserção feita com sucesso";
             
@@ -30,7 +32,8 @@ class Cadastro{
     public function cadastrarPassos($parametros) { 
         try {
             
-            insercaoDado::cadastrarPassos();
+            // chamando a classe e o metodo que fazem a inserção dos passos
+            insercaoDados::cadastrarPassos();
 
             echo "inserção feita com sucesso";
             

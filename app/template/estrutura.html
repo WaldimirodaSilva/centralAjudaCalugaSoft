@@ -58,8 +58,7 @@
 <<<<<<< HEAD
             <!-- inicio do model Adicionar software-->
 =======
-            <!-- inicio do model Adicionar artigo-->
->>>>>>> b94b2df69bbf34281b9ee1124afdc7120c8460cc
+            <!-- inicio do model Adicionar artigo--> 
             <div class="modal fade" id="cadastraSoftwareModal" tabindex="-1" aria-labelledby="AdicionarSoftwareModal" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -69,13 +68,17 @@
                         </div>
                         <div class="modal-body m-4">
                             <span id="msgAlertaErro"></span>
-                            <form id="myForm">
+                            <form method="POST" action="?pagina=cadastrarSoftware" enctype="multipart/form-data">
                                 <div class="form-floating mb-3">
                                     <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome">
                                     <label for="nome">Nome</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <textarea type="text" name="discricao" class="form-control h-25" id="discricao" placeholder="Discrição" rows="5"></textarea>
+                                    <input type="file" name="arquivo" class="form-control" id="imagem">
+                                    <label for="nome">imagem</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <textarea type="text" name="descricao" class="form-control h-25" id="discricao" placeholder="Discrição" rows="5"></textarea>
                                     <label for="discricao">Discrição</label>
                                 </div>
                                 <div class="form-floating mb-3">
