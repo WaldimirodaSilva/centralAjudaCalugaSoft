@@ -24,7 +24,21 @@
 		}
 
 		public function artigo(){
-			echo file_get_contents('app/veiw/artigo.html');
+			try{
+				$idSoftware = pegaId::getId($_GET['id']);
+
+				$loader = new \Twig\Loader\FilesystemLoader('app/veiw');
+				$twig = new \Twig\Environment($loader);
+				$template = $twig->load('artigo.html');
+
+				$parametros = array();
+
+				$conteudo = $template->render($parametros);
+
+				echo $conteudo;
+			}catch(PDOException $e){
+				echo "Erro na visualização: ".$e->getMessage();
+			}
 		} 
  
 		public function editarArtigo(){
