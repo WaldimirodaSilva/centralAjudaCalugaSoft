@@ -36,11 +36,12 @@
                     <span id="msgAlertaErro"></span>
                     <form id="cad-agenda-form">
                         <div class="form-floating mb-3">
-                            <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Título">
+                            <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Título" maxlength="25">
                             <label for="titulo">Título</label>
                         </div>
-                        <div class="mb-3">
-                            <input type="file" class="form-control form-control-sm" aria-label="Small file input example">
+                        <div class="form-floating mb-3">
+                            <input type="file" name="arquivo" class="form-control" id="video">
+                            <label for="nome">Vídeo</label>
                         </div>
                         <div class="form-floating mb-3">
                                 <button type="button" class="btn btn-primary container">Adicionar</button>
@@ -56,7 +57,7 @@
     
 
 
-        <!-- inicio do model Adicionar artigo--> 
+        <!-- inicio do model Adicionar software--> 
         <div class="modal fade" id="cadastraSoftwareModal" tabindex="-1" aria-labelledby="AdicionarSoftwareModal" style="display: none;" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -68,7 +69,7 @@
                         <span id="msgAlertaErro"></span>
                         <form method="POST" action="?pagina=cadastrarSoftware" enctype="multipart/form-data">
                             <div class="form-floating mb-3">
-                                <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome">
+                                <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" maxlength="25">
                                 <label for="nome">Nome</label>
                             </div>
                             <div class="form-floating mb-3">
@@ -76,7 +77,7 @@
                                 <label for="nome">imagem</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <textarea type="text" name="descricao" class="form-control h-25" id="discricao" placeholder="Discrição" rows="5"></textarea>
+                                <textarea type="text" name="descricao" class="form-control h-25" id="discricao" placeholder="Discrição" rows="5" maxlength="130"></textarea>
                                 <label for="discricao">Discrição</label>
                             </div>
                             <div class="form-floating mb-3">
@@ -92,30 +93,6 @@
         <!-- fim do model adicionar software -->
 
 
-        <!-- inicio do model Adicionar passos-->
-        <div class="modal fade" id="AdicionarPassosModal" tabindex="-1" aria-labelledby="AdicionarModal" style="display: none;" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="AdicionarModal">Como gerar documentos</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body m-5">
-                        <span id="msgAlertaErro"></span>
-                        <form id="cad-agenda-form">
-                            <div class="form-floating mb-3">
-                                <input type="text" name="DescreverPasso" class="form-control" id="titulo" placeholder="Descrevera o passo">
-                                <label for="DescreverPasso">Descrevera o passo</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                    <button type="button" class="btn btn-primary container">Adicionar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- fim do model adicionar passo -->
 
 
     <footer class="footer">

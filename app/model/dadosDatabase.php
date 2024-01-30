@@ -9,7 +9,7 @@
 		{
 			$con = conexao::pegandoConexao();
 
-			$sql = "SELECT * FROM softwares ORDER BY id";
+			$sql = "SELECT * FROM softwares ORDER BY id desc";
 			$sql = $con->prepare($sql);
 			$sql->execute();
 

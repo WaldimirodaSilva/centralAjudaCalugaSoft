@@ -1,8 +1,9 @@
-<section class="mt-2 mb-5 contentContainer container py-4">
+<section class="mt-2 mb-5 contentContainer container py-4 p-4">
+  <span id="msgAlertaErro"><div class="alert alert-success">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div></span>
 
               <div class="row contentBox mt-5">
-                  <div class="col-md-4 col-lg-4 box">
-                    <img src="app/template/img/adicionar.png" class="header w-25">
+                  <div class="col-md-4 col-lg-4 box mb-4">
+                    <img src="app/template/img/adicionar.png" class="w-25">
                     <div class="boxBody">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
                     </div>
@@ -13,10 +14,11 @@
 
                    {% for software in softwares %}
 
-                      <div class="col-md-4 col-lg-4 box mb-3" id="box-hover">
+                    <div class="col-md-4 col-lg-4 box mb-4" id="box-hover">
                       <img src="app/template/img/softwares/{{software.imagem}}" class="header">
                       <div class="boxBody">
-                          {{software.descricao}}
+                          <h5>{{software.nome}}</h5>
+                          <p class="mb-0">{{software.descricao}}</p>
                       </div>
                       <div class="boxFooter">
                           <a href="?pagina=artigo" class="buttom buttom-primary">Gerir fq</a>
