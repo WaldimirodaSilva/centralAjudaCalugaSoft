@@ -12,7 +12,7 @@
 
 	require_once 'app/model/insercaoDados.php';
 	require_once 'app/model/dadosDatabase.php';
-
+ 
 	// implementação dos controllers
 
 	require_once 'app/controller/paginaPrincipais.php';

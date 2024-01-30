@@ -21,43 +21,10 @@
             Soluções de softwares</h1>
     </div>
 
-	<main>{{area_dinamica}}</main>
-
-
-    <!-- inicio do model Adicionar artigo-->
-    <div class="modal fade" id="cadastraArtigoModal" tabindex="-1" aria-labelledby="AdicionarArtigoModal" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="AdicionarArtigoModal">Novo Artigo</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body m-4">
-                    <span id="msgAlertaErro"></span>
-                    <form id="cad-agenda-form">
-                        <div class="form-floating mb-3">
-                            <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Título" maxlength="25">
-                            <label for="titulo">Título</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="file" name="arquivo" class="form-control" id="video">
-                            <label for="nome">Vídeo</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                                <button type="button" class="btn btn-primary container">Adicionar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- fim do model adicionar artigo -->
+	{{area_dinamica}}
 
     
-
-
-        <!-- inicio do model Adicionar software--> 
+        <!-- inicio do model Adicionar artigo--> 
         <div class="modal fade" id="cadastraSoftwareModal" tabindex="-1" aria-labelledby="AdicionarSoftwareModal" style="display: none;" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -93,6 +60,30 @@
         <!-- fim do model adicionar software -->
 
 
+        <!-- inicio do model Adicionar passos-->
+        <div class="modal fade" id="AdicionarPassosModal" tabindex="-1" aria-labelledby="AdicionarModal" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="AdicionarModal">Como gerar documentos</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body m-5">
+                        <span id="msgAlertaErro"></span>
+                        <form id="cad-agenda-form">
+                            <div class="form-floating mb-3">
+                                <input type="text" name="passo" class="form-control" id="titulo" placeholder="Descrevera o passo">
+                                <label for="DescreverPasso">Descrevera o passo</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                    <button type="button" class="btn btn-primary container">Adicionar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- fim do model adicionar passo -->
 
 
     <footer class="footer">
