@@ -71,32 +71,28 @@
             {
 			$conexao = conexao::pegandoConexao();
 
-                  if (isset($dadosInsercao['nome']) || isset($idSoftware) || isset($arquivo))
+                  if (empty($dadosInsercao['nome']) || empty($idSoftware) || empty($arquivo))
                   {
                         $nomeArquivoBd = insercaoDados::mandarArquivo($arquivo,'midias/','video');
 
                         var_dump($dadosInsercao);
 
                         // Utilizando prepared statement para prevenir SQL injection
-                        /*$stmt = $conexao->prepare("INSERT INTO artigo (nome, softwarePertecente,estado) VALUES (:nome, :software,:estado)");
+                        $stmt = $conexao->prepare("INSERT INTO artigo (nome, video, softwarePertecente,estado) VALUES (:nome, :video, :software,:estado)");
                         $stmt->bindValue(':nome',$dadosInsercao['titulo']);
+                        $stmt->bindValue(':video',$nomeArquivoBd);
                         $stmt->bindValue(':software',$software);
                         $stmt->bindValue(':estado',1);
 
                         $id = $conexao->lastInsertId();
 
-                        $stmt->execute();
+                        $stmt->execute(); 
 
-                        $stmt_2 = $conexao->prepare("INSERT INTO artigo (idArtigo, nomeMidia) VALUES (:id, :midia)");
-
-                        $stmt_2->bindValue(':id',$id);
-                        $stmt_2->bindValue(':midia',$nomeArquivoBd);
-
-                        $stmt_2->execute();*/
+                        $stmt_2->execute();
 
 
                   }else{
-                        throw new Exception("parametros nescessarios não existem", 1);
+                        throw new Exception("parametros para a inserção estão vazios", 1);
                         
                   }
 
@@ -107,14 +103,19 @@
             {
 			$conexao = conexao::pegandoConexao();
 
-                  // Utilizando prepared statement para prevenir SQL injection
-                  $stmt = $conexao->prepare("INSERT INTO passos (idArtigo, texto) VALUES (:idArtigo, :texto)");
-                  $stmt->bindParam(':nome', );
-                  $stmt->bindParam(':estado', );
+                  if (!empty($idArtigo) || !empty($dadosInsercao['passo'])) {
+                        // Utilizando prepared statement para prevenir SQL injection
+                        $stmt = $conexao->prepare("INSERT INTO passos (idArtigo, texto) VALUES (:idArtigo, :texto)");
+                        $stmt->bindValue(':id', $idArtigo);
+                        $stmt->bindValue(':texto', $dadosInsercao['passo']);
 
-                  $stmt->execute();
+                        $stmt->execute();
 
-                  $id = $conexao->lastInsertId();
+                        //$id = $conexao->lastInsertId();     
+                  }else{
+                        throw new Exception("parametros para a inserção estão vazios", 1);
+                        
+                  }
 		}
 	}
 

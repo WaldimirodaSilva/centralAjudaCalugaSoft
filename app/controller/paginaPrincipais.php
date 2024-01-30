@@ -26,15 +26,15 @@
 			}
 		}
 
-		public function artigo(){
-			try{
-				$idSoftware = pegaId::getId($_GET['id']);
+		public function artigo($params){
+			try{ 
 
 				$loader = new \Twig\Loader\FilesystemLoader('app/veiw');
 				$twig = new \Twig\Environment($loader);
 				$template = $twig->load('artigo.html');
 
 				$parametros = array();
+				$parametros['id'] = $params[0];
 
 				$conteudo = $template->render($parametros);
 
