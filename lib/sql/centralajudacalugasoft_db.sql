@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 25-Jan-2024 às 11:45
+-- Tempo de geração: 30-Jan-2024 às 14:13
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `artigo` (
   `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
+  `video` varchar(150) NOT NULL,
   `softwarePertecente` int(11) NOT NULL,
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -55,20 +56,18 @@ CREATE TABLE `passos` (
 CREATE TABLE `softwares` (
   `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
-  `estado` int(11) NOT NULL
+  `imagem` varchar(150) NOT NULL,
+  `estado` int(11) NOT NULL,
+  `descricao` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Estrutura da tabela `video`
+-- Extraindo dados da tabela `softwares`
 --
 
-CREATE TABLE `video` (
-  `id` int(11) NOT NULL,
-  `idArtigo` int(11) NOT NULL,
-  `nomeMidia` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `softwares` (`id`, `nome`, `imagem`, `estado`, `descricao`) VALUES
+(9, 'Gestor escolar', 'arquivo65b8116f1dfc82.68479715.jpg', 1, 'ksjfjsnjfs gjndgjnfjdg jfngjfnjg fjngjfnjhnnfj  hjgnhnjgfh gnhjd hjnfdjnhj hjnjfdnhf'),
+(10, 'dropbox', 'arquivo65b8f515609187.59013145.jpg', 1, 'kmkfmskf skmfksmfks fksmkfmskfmk fkmdkfmkdmfkdfkd fkdmfkdm fdkmfkdmf mdkfdf dkfmkdfkd ');
 
 --
 -- Índices para tabelas despejadas
@@ -94,13 +93,6 @@ ALTER TABLE `softwares`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `video`
---
-ALTER TABLE `video`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idArtigo` (`idArtigo`);
-
---
 -- AUTO_INCREMENT de tabelas despejadas
 --
 
@@ -108,7 +100,7 @@ ALTER TABLE `video`
 -- AUTO_INCREMENT de tabela `artigo`
 --
 ALTER TABLE `artigo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `passos`
@@ -120,13 +112,7 @@ ALTER TABLE `passos`
 -- AUTO_INCREMENT de tabela `softwares`
 --
 ALTER TABLE `softwares`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `video`
---
-ALTER TABLE `video`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restrições para despejos de tabelas
@@ -137,12 +123,6 @@ ALTER TABLE `video`
 --
 ALTER TABLE `passos`
   ADD CONSTRAINT `passos_ibfk_1` FOREIGN KEY (`idArtigo`) REFERENCES `artigo` (`id`);
-
---
--- Limitadores para a tabela `video`
---
-ALTER TABLE `video`
-  ADD CONSTRAINT `video_ibfk_1` FOREIGN KEY (`idArtigo`) REFERENCES `artigo` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
