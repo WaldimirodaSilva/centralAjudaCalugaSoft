@@ -42,6 +42,7 @@ class crudSistema{
         } catch (PDOException $e) {
             echo "Erro ao cadastrar artigo: " . $e->getMessage();
         }
+
     } 
  
     public function cadastrarPassos($parametro) { 

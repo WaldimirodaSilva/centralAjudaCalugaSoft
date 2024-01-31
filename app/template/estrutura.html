@@ -2,9 +2,12 @@
 <html>
 <head>
 	<title>Central de Ajuda | CalungaSoft</title>
-	<link rel="stylesheet" href="app/template/css/style.css">
+
+     <link rel="stylesheet" href="app/template/css/perfect-scrollbar.css">
+     <link rel="stylesheet" href="app/template/css/main.css">
+	 <link rel="stylesheet" href="app/template/css/style.css">
     <link rel="stylesheet" type="text/css" href="app/template/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="app/template/boxicons-master/css/boxicons.min.css">
+     <link rel="stylesheet" type="text/css" href="app/template/boxicons-master/css/boxicons.min.css">
      <script src="app/template/js/script.js" defer></script>
      <script src="app/template/js/custom.js" defer></script>
    
@@ -55,9 +58,7 @@
                 </div>
             </div>
         </div>
-
-
-        <!-- fim do model adicionar software -->
+           <!-- fim do model adicionar software -->
 
 
         <!-- inicio do model Adicionar passos-->
@@ -70,19 +71,19 @@
                     </div>
                     <div class="modal-body m-5">
                         <span id="msgAlertaErro"></span>
-                        <form id="cad-agenda-form">
+                        <form id="cad-agenda-form" method="post" action="">
                             <div class="form-floating mb-3">
                                 <input type="text" name="passo" class="form-control" id="titulo" placeholder="Descrevera o passo">
                                 <label for="DescreverPasso">Descrevera o passo</label>
                             </div>
                             <div class="form-floating mb-3">
-                                    <button type="button" class="btn btn-primary container">Adicionar</button>
+                                    <input type="submit" class="btn btn-primary container" value="Adicionar"></input>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
+         </div>
         <!-- fim do model adicionar passo -->
 
 
@@ -90,10 +91,10 @@
         <div class="linha"></div>
        <article class="container">
             <div class="footer-item footer-contact">
-                <p><i class="bx bx-map"></i> Cazenga, Mediateca Zé DU 
+                <p><i class="bx bx-map"></i> Viana, Hojy-Henda 
                     <i class="bx bx-phone"></i> 945056121 -- 925637234
-                    <i class="bx bx-envelope"></i> tayzla01@gmail.com</p>
-                    <p>copyright  &copy 2024 - Lorem ipsum dolor sit | consectetur adipisicing elit <a href="#">CalungaSOFT</a></p>
+                    <i class="bx bx-envelope"></i> calungasoft@support.com</p>
+                    <p>copyright  &copy 2024 - Mais tecnologia mais produtividade | <a href="#">CalungaSOFT</a></p>
                 </div>
            </div>
        </article>
@@ -102,8 +103,20 @@
      <!--JS -->
  <script src="app/template/js/jquery-3.5.1.min.js"></script>
  <script src="app/template/js/bootstrap.bundle.min.js"></script>
+ <script src="app/template/jquery/jquery-3.2.1.min.js"></script>
+<script src="app/template/js/perfect-scrollbar.min.js"></script>
  <script src="app/template/js/popper.min.js"></script>
+<script>
+        $('.js-pscroll').each(function(){
+            var ps = new PerfectScrollbar(this);
 
+            $(window).on('resize', function(){
+                ps.update();
+            })
+        });
+            
+        
+    </script>
  
 </body>
 </html>

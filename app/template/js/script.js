@@ -1,5 +1,7 @@
 /*==============selecao de elementos ===========*/
 const btnSearch=document.querySelector("#btnSearch");
+const formData=document.querySelector("#formData");
+ console.log(formData.elements);
 /*===============section funcaos ==============*/
   const getSearch= (search) =>{
        const artigos=document.querySelectorAll(".artigo");
@@ -14,4 +16,5 @@ const btnSearch=document.querySelector("#btnSearch");
 /*=====================Evetos====================*/
   btnSearch.addEventListener("keyup",()=>{
    	   getSearch(btnSearch.value);
-   });       
+   }); 
+
