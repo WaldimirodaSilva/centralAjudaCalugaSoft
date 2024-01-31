@@ -57,7 +57,6 @@
                         $stmt->bindValue(':imagem',$nomeArquivoBd);
                         $stmt->bindValue(':estado',1);
                         $stmt->bindValue(':descricao',$dadosInsercao['descricao']);
-
                         $stmt->execute();     
                   }else{
                         throw new Exception("parametros nescessarios não existem", 1);

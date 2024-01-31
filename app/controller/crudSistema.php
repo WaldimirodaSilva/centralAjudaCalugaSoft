@@ -8,8 +8,16 @@ class crudSistema{
             
             // chamando a classe e o metodo que fazem a inserção dos softwares
             insercaoDados::cadastrarSoftware($_POST,$_FILES['arquivo']);
-
-            header('Location: http://localhost/www/centralAjudaCalugaSoft/');
+            // Verifica se está sendo executado no servidor WAMP
+                if (strpos($_SERVER['SERVER_SOFTWARE'], 'WAMP') !== false) {
+            // Redireciona para o endereço no WAMP
+                    header('Location: http://localhost/www/centralAjudaCalugaSoft/');
+                    exit;
+                } else {
+            // Redireciona para o endereço padrão XAMP  
+                    header('Location: http://localhost/centralAjudaCalugaSoft/');
+                    exit;
+                }
  
        } catch (PDOException $e) {
             echo "Erro ao cadastrar software: " . $e->getMessage();

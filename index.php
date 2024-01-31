@@ -1,5 +1,6 @@
 <?php
-
+     //inicio de sessão
+     session_start();
 	// implementação da conexao ao banco de dados
 
 	require_once 'lib/database/conexao.php';
@@ -12,7 +13,8 @@
 
 	require_once 'app/model/insercaoDados.php';
 	require_once 'app/model/dadosDatabase.php';
- 
+     // implementação do Helper para tratamento de regras que extras de negócio..
+	 require_once 'app/Helper/helper.php';
 	// implementação dos controllers
 
 	require_once 'app/controller/paginaPrincipais.php';

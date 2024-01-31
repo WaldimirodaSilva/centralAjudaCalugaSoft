@@ -5,7 +5,7 @@
                   <div class="col-md-4 col-lg-4 box mb-4">
                     <img src="app/template/img/adicionar.png" class="w-25">
                     <div class="boxBody">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+                         Aqui, você pode fornecer informações essenciais sobre o  projeto de software.Que se pretende gerar as <strong class="text-muted">Fq</strong>
                     </div>
                     <div class="boxFooter"> 
                         <a href="#" class="buttom buttom-primary" data-bs-toggle="modal" data-bs-target="#cadastraSoftwareModal">Adicionar</a>

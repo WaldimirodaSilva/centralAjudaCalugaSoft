@@ -10,8 +10,7 @@
 				// carregando a página com o twig
 				$loader = new \Twig\Loader\FilesystemLoader('app/veiw');
 				$twig = new \Twig\Environment($loader);
-				$template = $twig->load('home.html');
-
+				$template = $twig->load('home.php');
 				// colocando os dados do banco de dados na página
 				$parametros = array();
 				$parametros['softwares'] = $colecSoftware;
