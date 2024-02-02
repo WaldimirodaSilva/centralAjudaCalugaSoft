@@ -25,8 +25,11 @@
 			}
 		}
 
+		// os metodos abaixo seguem o mesmo conceito do primeiro
+
 		public function artigo($params){
 			try{ 
+				$colecArtigo = dadosDatabase::artigos($params[0]);
 
 				$loader = new \Twig\Loader\FilesystemLoader('app/veiw');
 				$twig = new \Twig\Environment($loader);
@@ -34,6 +37,7 @@
 
 				$parametros = array();
 				$parametros['id'] = $params[0];
+				$parametros['artigos'] = $colecArtigo;
 
 				$conteudo = $template->render($parametros);
 

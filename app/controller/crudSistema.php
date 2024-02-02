@@ -27,13 +27,11 @@ class crudSistema{
     public function cadastrarArtigo($parametro) {
         try {
 
-            if ($_POST == null || !isset($_POST) || $_FILES == null || !isset($_FILES) || $parametro == null || !isset($parametro)) {
+            if ($_POST != null || !isset($_POST) || $_FILES != null || !isset($_FILES) || $parametro != null || !isset($parametro)) {
                 // chamando a classe e o metodo que fazem a inserção dos artigos
-                insercaoDados::cadastrarArtigo($parametro[0],$_POST,$_FILES['arquivo']);
+                insercaoDados::cadastrarArtigo($parametro[0],$_POST,$_FILES['arquivo']); 
 
-                echo "inserção feita com sucesso";
-
-                //header('Location: http://localhost/www/centralAjudaCalugaSoft/?pagina=artigo&id='.$parametros);   
+                header('Location: http://localhost/www/centralAjudaCalugaSoft/?pagina=artigo&id='.$parametro);   
             }else{
                 throw new Exception("os parametros nescessarios não existem", 1);
                 
@@ -48,7 +46,7 @@ class crudSistema{
     public function cadastrarPassos($parametro) { 
         try {
             
-            if ($_POST == null || !isset($_POST) || $parametro == null || !isset($parametro)) {
+            if ($_POST != null || !isset($_POST) || $parametro != null || !isset($parametro)) {
                 // chamando a classe e o metodo que fazem a inserção dos passos
                 insercaoDados::cadastrarPassos($parametro[0],$_POST);
 

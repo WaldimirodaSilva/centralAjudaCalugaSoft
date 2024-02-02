@@ -25,6 +25,27 @@
 
 			return $resultado;
 		}
+
+		public static function artigos($idSoft)
+		{
+			$con = conexao::pegandoConexao();
+
+			$sql = "SELECT * FROM artigo WHERE softwarePertecente = '$idSoft' ORDER BY id desc";
+			$sql = $con->prepare($sql);
+			$sql->execute();
+
+			$resultado = array();
+
+			while ($tb= $sql->fetchObject()) {
+				$resultado[] = $tb;
+			}
+
+			if (!$resultado) {
+				return null;
+			}
+
+			return $resultado;
+		}
 	}
 
 ?>
