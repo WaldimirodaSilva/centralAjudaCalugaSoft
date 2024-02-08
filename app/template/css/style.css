@@ -150,8 +150,7 @@ color:var(--secundary);}
 }
 .box .header{
   width:30%;
-  height: 30%;
-  border: 2px solid #000;
+  height: 30%; 
 }
 .box .boxBody{
   display:flex;

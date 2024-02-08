@@ -47,7 +47,7 @@
             {
 			$conexao = conexao::pegandoConexao();
 
-                  if (isset($dadosInsercao['nome']) || isset($dadosInsercao['descricao']) || isset($arquivo))
+                  if (!empty($dadosInsercao['nome']) && !empty($dadosInsercao['descricao']) && !empty($arquivo))
                   {
                         $nomeArquivoBd = insercaoDados::mandarArquivo($arquivo,'softwares/','imagem');
 
@@ -58,8 +58,10 @@
                         $stmt->bindValue(':estado',1);
                         $stmt->bindValue(':descricao',$dadosInsercao['descricao']);
                         $stmt->execute();     
+
+                        helper::mensagem('cadastroSoftwareFeito','O cadastro do software foi feito com sucesso.');
                   }else{
-                        echo "Os paramentros não podem estar vazios";
+                        helper::mensagem('cadastroSoftwareErro','Os paramentros nescessarios para o cadastro estão vazios.','danger');
                         
                   }
 
@@ -85,9 +87,9 @@
 
                         $stmt->execute();
 
-
+                        helper::mensagem('cadastroArtigoFeito','O cadastro do artigo foi feito com sucesso.');
                   }else{
-                        echo "Os paramentros não podem estar vazios";
+                        helper::mensagem('cadastroArtigoErro','Os paramentros nescessarios para o cadastro estão vazios.','danger');
                   }
 
                   //$id = $conexao->lastInsertId();

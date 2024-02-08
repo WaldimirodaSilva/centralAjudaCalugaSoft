@@ -14,6 +14,13 @@
 				// colocando os dados do banco de dados na página
 				$parametros = array();
 				$parametros['softwares'] = $colecSoftware;
+				if (isset($_SESSION['cadastroSoftwareFeito'])) 
+				{
+					helper::mensagem('cadastroSoftwareFeito');
+				}elseif (isset($_SESSION['cadastroSoftwareErro'])) 
+				{
+					helper::mensagem('cadastroSoftwareErro');
+				}
 
 				// renderizando a página para o usúario
 				$conteudo = $template->render($parametros);
@@ -38,6 +45,13 @@
 				$parametros = array();
 				$parametros['id'] = $params[0];
 				$parametros['artigos'] = $colecArtigo;
+				if (isset($_SESSION['cadastroArtigoFeito'])) 
+				{
+					helper::mensagem('cadastroArtigoFeito');
+				}elseif (isset($_SESSION['cadastroArtigoErro'])) 
+				{
+					helper::mensagem('cadastroArtigoErro');
+				}
 
 				$conteudo = $template->render($parametros);
 

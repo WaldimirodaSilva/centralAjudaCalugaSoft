@@ -22,7 +22,7 @@
                }elseif(!empty($_SESSION[$nome]) && empty($text))
                  {
                    $class=!empty( $_SESSION[$nome.'classe'])? $_SESSION[$nome.'classe']:'alert  alert-success';
-                   echo '<div class="'.$class.'">'.$_SESSION[$nome].'</div>';
+                   echo '<div class="alert alert-'.$class.'">'.$_SESSION[$nome].'</div>';
                     unset( $_SESSION[$nome]);
                     unset( $_SESSION[$nome.'classe']);
                }

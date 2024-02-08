@@ -24,8 +24,11 @@
             Soluções de softwares</h1>
     </div>
 
-	{{area_dinamica}}
-
+    <main>
+        <section class="mt-2 mb-5 contentContainer container py-4 p-4">
+           {{area_dinamica}} 
+        </section>
+    </main>
     
         <!-- inicio do model Adicionar artigo--> 
         <div class="modal fade" id="cadastraSoftwareModal" tabindex="-1" aria-labelledby="AdicionarSoftwareModal" style="display: none;" aria-hidden="true">
@@ -90,6 +93,21 @@
             
         
     </script>
+
+<!-- algoritmo para criação de rota dos fórmularios de cadastro de passos para cada artigo -->
+<script>
+    $(function(){
+        //pegando o botao de cada chamamento do modal de cadastro de cada artigo
+        const botao = $('.btn-modal-call');
+        var id = null;
+        botao.click(function(){
+            id = $(this).attr('title');
+            alert('ola');
+        });
+
+        //$('#cad-agenda-form').attr('action','?pagina=cadastrarPassos&id='+id);
+    });
+</script>
  
 </body>
 </html>

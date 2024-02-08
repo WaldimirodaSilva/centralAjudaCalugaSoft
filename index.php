@@ -1,6 +1,8 @@
 <?php
      //inicio de sessão
+
      session_start();
+
 	// implementação da conexao ao banco de dados
 
 	require_once 'lib/database/conexao.php';
