@@ -24,7 +24,11 @@
             Soluções de softwares</h1>
     </div>
 
-	{{area_dinamica}}
+	<main>
+        <section class="mt-2 mb-5 contentContainer container py-4 p-4">
+	    {{area_dinamica}}
+        </section>
+    </main>
 
     
         <!-- inicio do model Adicionar artigo--> 
@@ -86,9 +90,19 @@
             $(window).on('resize', function(){
                 ps.update();
             })
+        });        
+</script>
+
+<!-- codigo javascript com jquery para torna o formulário de inserção de passos seja utilizados para
+    todos os artigos de um software -->
+    <script>
+        $(function(){
+            const form = $('.passoCadastro');
+            const software = $('#passeSoftware').attr('alt');
+            $('.passoArtigo').click(function(){
+                form.attr('action','?pagina=cadastrarPassos&id='+ $(this).attr('alt') + '&idSegundo=' + software);
+            });
         });
-            
-        
     </script>
  
 </body>

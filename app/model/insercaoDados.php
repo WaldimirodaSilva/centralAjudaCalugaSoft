@@ -19,7 +19,8 @@
                         move_uploaded_file($arquivo_tmp,$destino); 
 
                         return $nomeArquivo;   
-                  }else{
+                  }else
+                  {
                         $arquivo_tmp = $arquivo['tmp_name'];
 
                         $unique = uniqid('arquivo',true);
@@ -34,7 +35,8 @@
                   }
             }
 
-            public static function verificaExiste($avaliado,$tabela){
+            public static function verificaExiste($avaliado,$tabela)
+            {
 
             }
       }
@@ -47,7 +49,7 @@
             {
 			$conexao = conexao::pegandoConexao();
 
-                  if (isset($dadosInsercao['nome']) || isset($dadosInsercao['descricao']) || isset($arquivo))
+                  if (!empty($dadosInsercao['nome']) && !empty($dadosInsercao['descricao']) && !empty($arquivo))
                   {
                         $nomeArquivoBd = insercaoDados::mandarArquivo($arquivo,'softwares/','imagem');
 
@@ -57,10 +59,11 @@
                         $stmt->bindValue(':imagem',$nomeArquivoBd);
                         $stmt->bindValue(':estado',1);
                         $stmt->bindValue(':descricao',$dadosInsercao['descricao']);
-                        $stmt->execute();     
-                  }else{
-                        echo "Os paramentros não podem estar vazios";
-                        
+                        $stmt->execute(); 
+                        helper::mensagem('softwareInserido','O software foi cadastrado com sucesso');    
+                  }else
+                  {
+                        helper::mensagem('softwareErro','Os paramentros não podem estar vazios','danger');
                   }
 
                   //$id = $conexao->lastInsertId();
@@ -73,7 +76,7 @@
                   if (!empty($dadosInsercao['titulo']) && !empty($idSoftware) && !empty($arquivo))
                   {
                         $nomeArquivoBd = insercaoDados::mandarArquivo($arquivo,'midias/','video');
- 
+
                         // Utilizando prepared statement para prevenir SQL injection 
                         $stmt = $conexao->prepare("INSERT INTO artigo (nome, video, softwarePertecente,estado) VALUES (:nome, :video, :software,:estado)");
                         $stmt->bindValue(':nome',$dadosInsercao['titulo']);
@@ -85,9 +88,10 @@
 
                         $stmt->execute();
 
-
-                  }else{
-                        echo "Os paramentros não podem estar vazios";
+                        helper::mensagem('artigoInserido','O artigo foi cadastrado com sucesso');
+                  }else
+                  {
+                        helper::mensagem('artigoErro','Os paramentros não podem estar vazios','danger');
                   }
 
                   //$id = $conexao->lastInsertId();
@@ -97,17 +101,20 @@
             {
 			$conexao = conexao::pegandoConexao();
 
-                  if (!empty($idArtigo) && !empty($dadosInsercao['passo'])) {
+                  if (!empty($idArtigo) && !empty($dadosInsercao['passo'])) 
+                  {
                         // Utilizando prepared statement para prevenir SQL injection
                         $stmt = $conexao->prepare("INSERT INTO passos (idArtigo, texto) VALUES (:idArtigo, :texto)");
-                        $stmt->bindValue(':id', $idArtigo);
+                        $stmt->bindValue(':idArtigo', $idArtigo);
                         $stmt->bindValue(':texto', $dadosInsercao['passo']);
 
                         $stmt->execute();
 
+                        helper::mensagem('passoInserido','O passo foi cadastrado com sucesso');
                         //$id = $conexao->lastInsertId();     
-                  }else{
-                        echo "Os paramentros não podem estar vazios";
+                  }else
+                  {
+                        helper::mensagem('passoErro','Os paramentros não podem estar vazios','danger');
                   }
 		}
 	}

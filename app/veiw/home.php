@@ -1,4 +1,4 @@
-<section class="mt-2 mb-5 contentContainer container py-4 p-4">
+
   <span id="msgAlertaErro"><div class="alert alert-success">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div></span>
 
               <div class="row contentBox mt-5">
@@ -27,5 +27,3 @@
 
                    {% endfor %}
               </div>
-        </section>
-</main>

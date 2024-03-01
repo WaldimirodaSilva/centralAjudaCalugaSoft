@@ -46,6 +46,26 @@
 
 			return $resultado;
 		}
+
+		public static function passos($idArtigo){
+			$con = conexao::pegandoConexao();
+
+			$sql = "SELECT * FROM passos WHERE idArtigo = '$idArtigo' ORDER BY id asc";
+			$sql = $con->prepare($sql);
+			$sql->execute();
+
+			$resultado = array();
+
+			while ($tb= $sql->fetchObject()) {
+				$resultado[] = $tb;
+			}
+
+			if (!$resultado) {
+				return null;
+			}
+
+			return $resultado;
+		}
 	}
 
 ?>
