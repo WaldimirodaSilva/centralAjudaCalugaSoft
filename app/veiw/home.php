@@ -1,6 +1,4 @@
 
-  <span id="msgAlertaErro"><div class="alert alert-success">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div></span>
-
               <div class="row contentBox mt-5">
                   <div class="col-md-4 col-lg-4 box mb-4">
                     <img src="app/template/img/adicionar.png" class="w-25">
