@@ -13,6 +13,7 @@
 
 	require_once 'app/model/insercaoDados.php';
 	require_once 'app/model/dadosDatabase.php';
+	require_once 'app/model/edicaoArtigo.php';
 
      // implementação do Helper para tratamento de regras que extras de negócio..
 	 require_once 'app/helper/helper.php';
@@ -20,6 +21,7 @@
 	// implementação dos controllers 
 	require_once 'app/controller/paginaPrincipais.php';
 	require_once 'app/controller/crudSistema.php';
+	require_once 'app/controller/paginaViaUrl.php';
 
 	//implementação do componentes composer
 

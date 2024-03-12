@@ -3,17 +3,19 @@
     <div class="row w-50">
       <h3 class="mt-4">Editar Artigos</h3>
       <hr class="mb-5">
-      <form class="container">
+      {% set contarPassos = passosArtigo | length %}
+      {% set contarPassos = contarPassos - 1 %} 
+      <form class="container" method="POST" action="?pagina=edicaoArtigo&id={{dadosArtigo.id}}&idSegundo={{ passosArtigo | length }}" enctype="multipart/form-data">
         <div class="row mb-3">
           <label for="titilo" class="col-sm-2 col-form-label">Título</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="titilo" placeholder="Descrever o título">
+            <input type="text" class="form-control" id="titilo" name="titulo" value="{{dadosArtigo.nome}}" title="Descrever o título">
           </div>
         </div>
         <div class="row mb-3">
           <label for="video" class="col-sm-2 col-form-label">Vídeo</label>
           <div class="col-sm-10">
-            <input type="file" class="form-control " id="video">
+            <input type="file" class="form-control " name="video" id="video">
           </div>
         </div>
         <h5 class="mt-5">Passos</h5>
@@ -21,14 +23,22 @@
         <div class="table100 ver1">
              <div class="table100-body py-2 px-3 js-pscroll">
             <div class="row mb-3">
-              <label for="titilo" class="col-sm-2 col-form-label">Passo <i class="bx bx-stop text-primary align-middle"></i></label>
+              {% for i in 0..contarPassos %}
+                <label for="titilo" class="col-sm-2 col-form-label">Passo <i class="bx bx-stop text-primary align-middle"></i></label>
+                <div class="col-sm-10 mb-2">
+                  <input type="text" class="form-control" id="passo{{i + 1}}" name="passo{{i + 1}}" title="Descrever passo {{i + 1}}" value="{{passosArtigo[i].texto}}">
+
+                  <input type="text" style='display: none' class="form-control" id="passo{{i + 1}}" name="verIdPasso{{i + 1}}" title="Descrever passo {{i + 1}}" value="{{passosArtigo[i].texto}}">
+                </div>
+              {% endfor %}
+              <!--<label for="titilo" class="col-sm-2 col-form-label">Passo <i class="bx bx-stop text-primary align-middle"></i></label>
               <div class="col-sm-10 mb-2">
                 <input type="text" class="form-control" id="passo1" placeholder="Descrever passo 1">
               </div>
               <label for="titilo" class="col-sm-2 col-form-label">Passo <i class="bx bx-stop text-primary align-middle"></i></label>
               <div class="col-sm-10 mb-2">
                 <input type="text" class="form-control" id="passo2" placeholder="Descrever passo 2">
-              </div>
+              </div>-->
             </div>
       </div> 
      </div>

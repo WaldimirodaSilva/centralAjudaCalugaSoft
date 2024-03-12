@@ -47,16 +47,17 @@
 				$parametros = array();
 				$parametros['id'] = $params[0];
 				$parametros['artigos'] = $colecArtigo;
-				$parametros['vetor'] = array(10,45,33);
 
 				// pegando id de cada artigo para chamar os seus passos
+				$vetor = array();
 				if ($colecArtigo != null) {
 					foreach ($colecArtigo as $artigo) {
 						// pegando os passos do banco de dados desse artigo
 						$passosArtigo = dadosDatabase::passos($artigo->id);
 					
-						$parametros['artigo'.$artigo->id] = $passosArtigo; 
+						$vetor[] = $passosArtigo;
 					}
+					$parametros['passosArtigos'] = $vetor;
 				}
 
 				$conteudo = $template->render($parametros);
@@ -81,12 +82,31 @@
  
 		public function editarArtigo()
 		{
-			echo file_get_contents('app/veiw/editarArtigo.html');
+			$passosArtigo = dadosDatabase::passos($_GET['id']);
+			$dadosArtigo = dadosDatabase::artigo($_GET['id']);
+
+			$loader = new \Twig\Loader\FilesystemLoader('app/veiw');
+			$twig = new \Twig\Environment($loader);
+			$template = $twig->load('editarArtigo.html');
+
+			$parametros = array();
+			$parametros['dadosArtigo'] = $dadosArtigo;
+			$parametros['passosArtigo'] = $passosArtigo;
+
+			$conteudo = $template->render($parametros);
+
+			if (isset($_SESSION['atualizacaoFeita'])) {
+				helper::mensagem('atualizacaoFeita');
+			}elseif (isset($_SESSION['atualizacaoErro'])) {
+				helper::mensagem('atualizacaoErro');
+			}
+
+			echo $conteudo;
 		}
 
 		public function erroPedido()
 		{ 
-			echo "erro pagina não existente";
+			echo "ERRO 404: pagina sugerida não existe";
 		}
 
 		public function perguntasFrequentes()

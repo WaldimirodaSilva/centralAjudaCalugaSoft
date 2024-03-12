@@ -8,6 +8,9 @@
             {
                   if ($tipo == 'imagem')
                   {
+                        if ($arquivo['type'] == '') {
+                              # code...
+                        }
                         $arquivo_tmp = $arquivo['tmp_name'];
 
                         $unique = uniqid('arquivo',true);
@@ -60,10 +63,10 @@
                         $stmt->bindValue(':estado',1);
                         $stmt->bindValue(':descricao',$dadosInsercao['descricao']);
                         $stmt->execute(); 
-                        helper::mensagem('softwareInserido','O software foi cadastrado com sucesso');    
+                        //helper::mensagem('softwareInserido','O software foi cadastrado com sucesso');    
                   }else
                   {
-                        helper::mensagem('softwareErro','Os paramentros não podem estar vazios','danger');
+                        //helper::mensagem('softwareErro','Os paramentros não podem estar vazios','danger');
                   }
 
                   //$id = $conexao->lastInsertId();

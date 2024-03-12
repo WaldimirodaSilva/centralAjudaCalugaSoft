@@ -47,6 +47,22 @@
 			return $resultado;
 		}
 
+		public static function artigo($idArtigo){
+			$con = conexao::pegandoConexao();
+
+			$sql = "SELECT * FROM artigo WHERE id = '$idArtigo'";
+			$sql = $con->prepare($sql);
+			$sql->execute();
+
+			$resultado = null;
+
+			while ($tb= $sql->fetchObject()) {
+				$resultado = $tb;
+			}
+
+			return $resultado;
+		}
+
 		public static function passos($idArtigo){
 			$con = conexao::pegandoConexao();
 

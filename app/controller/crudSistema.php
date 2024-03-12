@@ -95,6 +95,36 @@ class crudSistema{
             echo "Erro ao cadastrar passos: " . $e->getMessage();
         }
     }
+
+    public function edicaoArtigo($parametro)
+    {
+        try
+        {
+            if ($_POST != null || isset($_POST) || $parametro != null || isset($parametro) || $_FILES != null || isset($_FILES)) 
+            {
+                // chamando a classe e o metodo que fazem a actulização dos dados
+                edicaoArtigo::mudarDados($_POST,$_FILES,$parametro[1],$parametro[0]);
+                // Verifica se está sendo executado no servidor WAMP
+                if (strpos($_SERVER['SERVER_SOFTWARE'], 'WAMP') !== false) 
+                {
+                    // Redireciona para o endereço no WAMP
+                    header('Location: http://localhost/www/centralAjudaCalugaSoft/?pagina=editarArtigo&id='.$parametro[0]);
+                    exit;
+                } else 
+                {
+                    // Redireciona para o endereço padrão XAMP  
+                    header('Location: http://localhost/www/centralAjudaCalugaSoft/?pagina=editarArtigo&id='.$parametro[0]);
+                    exit;
+                }   
+            }else
+            {
+                throw new Exception("os parametros nescessarios não existem", 1);
+            }
+        }catch(PDOException $e)
+        {
+            echo "Erro na actualização dos dados: " . $e->getMessage();
+        }
+    }
 }
 
 
