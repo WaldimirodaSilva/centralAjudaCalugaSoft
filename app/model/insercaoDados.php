@@ -8,9 +8,6 @@
             {
                   if ($tipo == 'imagem')
                   {
-                        if ($arquivo['type'] == '') {
-                              # code...
-                        }
                         $arquivo_tmp = $arquivo['tmp_name'];
 
                         $unique = uniqid('arquivo',true);
@@ -38,9 +35,25 @@
                   }
             }
 
-            public static function verificaExiste($avaliado,$tabela)
-            {
-
+            public static function verificarArquivo($arquivo,$tipo){
+                  if ($tipo == 'imagem') {
+                        if ($arquivo['type'] == 'image/jpeg' || $arquivo['type'] == 'image/png') 
+                        {
+                              return true;
+                        }else 
+                        {
+                              return false;
+                        }
+                  }elseif ($tipo == 'video') 
+                  {
+                        if ($arquivo['type'] == 'video/x-ms-wnv' || $arquivo['type'] == 'video/mp4' || $arquivo['type'] == 'video/ogg' || $arquivo['type'] == 'video/webm' && $arquivo['size'] <= 300000000)
+                        {
+                              return true;
+                        }else
+                        {
+                              return false;
+                        }
+                  }
             }
       }
 
@@ -48,25 +61,32 @@
 
 	class insercaoDados extends inserirArquivos
       {
+
 		public static function cadastrarSoftware($dadosInsercao,$arquivo)
             {
 			$conexao = conexao::pegandoConexao();
 
                   if (!empty($dadosInsercao['nome']) && !empty($dadosInsercao['descricao']) && !empty($arquivo))
                   {
-                        $nomeArquivoBd = insercaoDados::mandarArquivo($arquivo,'softwares/','imagem');
+                        if (self::verificarArquivo($arquivo,'imagem') != false) 
+                        {
+                              $nomeArquivoBd = insercaoDados::mandarArquivo($arquivo,'softwares/','imagem');
 
-                        // Utilizando prepared statement para prevenir SQL injection
-                        $stmt = $conexao->prepare("INSERT INTO softwares (nome, imagem, estado, descricao) VALUES (:nome, :imagem, :estado, :descricao)");
-                        $stmt->bindValue(':nome',$dadosInsercao['nome']);
-                        $stmt->bindValue(':imagem',$nomeArquivoBd);
-                        $stmt->bindValue(':estado',1);
-                        $stmt->bindValue(':descricao',$dadosInsercao['descricao']);
-                        $stmt->execute(); 
-                        //helper::mensagem('softwareInserido','O software foi cadastrado com sucesso');    
+                              // Utilizando prepared statement para prevenir SQL injection
+                              $stmt = $conexao->prepare("INSERT INTO softwares (nome, imagem, estado, descricao) VALUES (:nome, :imagem, :estado, :descricao)");
+                              $stmt->bindValue(':nome',$dadosInsercao['nome']);
+                              $stmt->bindValue(':imagem',$nomeArquivoBd);
+                              $stmt->bindValue(':estado',1);
+                              $stmt->bindValue(':descricao',$dadosInsercao['descricao']);
+                              $stmt->execute(); 
+                              helper::mensagem('softwareInserido','O software foi cadastrado com sucesso');
+                        }else
+                        {
+                              helper::mensagem('softwareErro','O arquivo deve ser de tipo imagem','danger');
+                        }    
                   }else
                   {
-                        //helper::mensagem('softwareErro','Os paramentros não podem estar vazios','danger');
+                        helper::mensagem('softwareErro','Os paramentros não podem estar vazios','danger');
                   }
 
                   //$id = $conexao->lastInsertId();
@@ -74,24 +94,29 @@
 
 		public static function cadastrarArtigo($idSoftware,$dadosInsercao,$arquivo)
             {
-			$conexao = conexao::pegandoConexao();
+                  $conexao = conexao::pegandoConexao();
 
                   if (!empty($dadosInsercao['titulo']) && !empty($idSoftware) && !empty($arquivo))
                   {
-                        $nomeArquivoBd = insercaoDados::mandarArquivo($arquivo,'midias/','video');
+                        if (self::verificarArquivo($arquivo,'video') != false) {
+                              $nomeArquivoBd = insercaoDados::mandarArquivo($arquivo,'midias/','video');
 
-                        // Utilizando prepared statement para prevenir SQL injection 
-                        $stmt = $conexao->prepare("INSERT INTO artigo (nome, video, softwarePertecente,estado) VALUES (:nome, :video, :software,:estado)");
-                        $stmt->bindValue(':nome',$dadosInsercao['titulo']);
-                        $stmt->bindValue(':video',$nomeArquivoBd);
-                        $stmt->bindValue(':software',$idSoftware);
-                        $stmt->bindValue(':estado',1);
+                              // Utilizando prepared statement para prevenir SQL injection 
+                              $stmt = $conexao->prepare("INSERT INTO artigo (nome, video, softwarePertecente,estado) VALUES (:nome, :video, :software,:estado)");
+                              $stmt->bindValue(':nome',$dadosInsercao['titulo']);
+                              $stmt->bindValue(':video',$nomeArquivoBd);
+                              $stmt->bindValue(':software',$idSoftware);
+                              $stmt->bindValue(':estado',1);
 
-                        //$id = $conexao->lastInsertId();
+                              //$id = $conexao->lastInsertId();
 
-                        $stmt->execute();
+                              $stmt->execute();
 
-                        helper::mensagem('artigoInserido','O artigo foi cadastrado com sucesso');
+                              helper::mensagem('artigoInserido','O artigo foi cadastrado com sucesso');     
+                        }else 
+                        {
+                              helper::mensagem('artigoErro','O arquivo deve ser de tipo video e não deve ser muito grande limite de 300MB','danger');
+                        }
                   }else
                   {
                         helper::mensagem('artigoErro','Os paramentros não podem estar vazios','danger');
