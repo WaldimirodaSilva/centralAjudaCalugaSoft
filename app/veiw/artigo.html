@@ -31,7 +31,11 @@
                     </p>
                     <div class="collapse" id="artigo{{artigo.id}}">
                         <div class="card card-body">
+                            {% if artigo.urlYoutube == 1 %}
+                            <iframe height="320" src="{{artigo.video}}" frameborder="0" allowfullscreen></iframe>
+                            {% else %}
                             <video src="app/template/midias/{{artigo.video}}" controls></video>
+                            {% endif %}
                             <ul>
                                 {% set contarPassos = vetorPasso | length %}
                                 {% set contarPassos = contarPassos - 1 %}
@@ -48,7 +52,7 @@
                         </div>
                     </div>
                <!--artigo end -->
-           {% endfor %}
+                {% endfor %}
 
                {% endif %}
 
@@ -69,6 +73,10 @@
                         </div>
                         <div class="mb-3">
                             <input type="file" class="form-control form-control-sm" aria-label="Small file input example" name="arquivo">
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="urlYoutube" placeholder="URL Youtube" name="urlYoutube">
+                            <label for="urlYoutube">URL de video</label>
                         </div>
                         <div class="form-floating mb-3">
                                 <input type="submit" class="btn btn-primary container" value="Adicionar"></input>

@@ -3,7 +3,7 @@
 	class paginaPrincipais
 	{
 		public function home()
-	{
+		{
 			try{
 				// pegando os dados no banco de dados
 				$colecSoftware = dadosDatabase::softwares();
@@ -19,9 +19,11 @@
 				// renderizando a página para o usúario
 				$conteudo = $template->render($parametros);
 
-				if (isset($_SESSION['softwareInserido'])) {
+				if (isset($_SESSION['softwareInserido'])) 
+				{
 					helper::mensagem('softwareInserido');
-				}elseif (isset($_SESSION['softwareErro'])) {
+				}elseif (isset($_SESSION['softwareErro']))
+				{
 					helper::mensagem('softwareErro');
 				}
 
@@ -50,8 +52,10 @@
 
 				// pegando id de cada artigo para chamar os seus passos
 				$vetor = array();
-				if ($colecArtigo != null) {
-					foreach ($colecArtigo as $artigo) {
+				if ($colecArtigo != null) 
+				{
+					foreach ($colecArtigo as $artigo) 
+					{
 						// pegando os passos do banco de dados desse artigo
 						$passosArtigo = dadosDatabase::passos($artigo->id);
 					
@@ -62,15 +66,19 @@
 
 				$conteudo = $template->render($parametros);
 
-				if (isset($_SESSION['artigoInserido'])) {
+				if (isset($_SESSION['artigoInserido'])) 
+				{
 					helper::mensagem('artigoInserido');
-				}elseif (isset($_SESSION['artigoErro'])) {
+				}elseif (isset($_SESSION['artigoErro'])) 
+				{
 					helper::mensagem('artigoErro');
 				}
 
-				if (isset($_SESSION['passoInserido'])) {
+				if (isset($_SESSION['passoInserido'])) 
+				{
 					helper::mensagem('passoInserido');
-				}elseif (isset($_SESSION['passoErro'])) {
+				}elseif (isset($_SESSION['passoErro'])) 
+				{
 					helper::mensagem('passoErro');
 				}
 
@@ -95,9 +103,11 @@
 
 			$conteudo = $template->render($parametros);
 
-			if (isset($_SESSION['atualizacaoFeita'])) {
+			if (isset($_SESSION['atualizacaoFeita'])) 
+			{
 				helper::mensagem('atualizacaoFeita');
-			}elseif (isset($_SESSION['atualizacaoErro'])) {
+			}elseif (isset($_SESSION['atualizacaoErro'])) 
+			{
 				helper::mensagem('atualizacaoErro');
 			}
 

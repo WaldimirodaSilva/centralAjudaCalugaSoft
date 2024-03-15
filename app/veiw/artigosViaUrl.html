@@ -34,9 +34,13 @@
                             <ul>
                                 {% set contarPassos = vetorPasso | length %}
                                 {% set contarPassos = contarPassos - 1 %}
-                                {% for indice, i in 0..contarPassos %}
-                                    <li><i class="bx bx-stop"></i><span>{{indice + 1}} - {{passosArtigos[contarArtigo][i].texto}}</span></li>
-                                {% endfor %}
+                                {% if passosArtigos[contarArtigo] | length != 0 %}
+                                    {% for indice, i in 0..contarPassos %}
+                                        <li><i class="bx bx-stop"></i><span>{{indice + 1}} - {{passosArtigos[contarArtigo][i].texto}}</span></li>
+                                    {% endfor %}
+                                {% else %}
+                                    <h3>Por enquanto não existem passos para este artigo</h3>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>

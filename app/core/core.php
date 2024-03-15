@@ -26,7 +26,7 @@
 		}
 
 		// metodo para exibição dos dados da página pedida
-		public function start($urlGet)
+		public function start($url)
 		{
 
 			if (!class_exists($this->controller)) {
@@ -34,22 +34,22 @@
 				$this->acao = 'erroPedido';
 			}
 
-			if (!isset($urlGet['pagina'])) {
+			if (!isset($url['pagina'])) {
 				$this->acao = 'home';
 				$this->controller = $this->pedindoController('home');
 			}else{
-				$this->acao = $urlGet['pagina'];
-				$this->controller = $this->pedindoController($urlGet['pagina']);
+				$this->acao = $url['pagina'];
+				$this->controller = $this->pedindoController($url['pagina']);
 			} 
 
-			if (isset($urlGet['id']) && $urlGet['id'] != null) {
-				$id = $urlGet['id'];
+			if (isset($url['id']) && $url['id'] != null) {
+				$id = $url['id'];
 			}else{
 				$id = null;
 			}
 
-			if (isset($urlGet['idSegundo']) && $urlGet['idSegundo'] != null) {
-				$idSegundo = $urlGet['idSegundo'];
+			if (isset($url['idSegundo']) && $url['idSegundo'] != null) {
+				$idSegundo = $url['idSegundo'];
 			}else{
 				$idSegundo = null;
 			}

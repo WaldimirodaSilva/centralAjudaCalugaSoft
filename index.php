@@ -1,6 +1,7 @@
 <?php
-     //inicio de sessão
-     session_start();
+
+	//inicio de sessão
+    session_start();
 	// implementação da conexao ao banco de dados
 
 	require_once 'lib/database/conexao.php';
@@ -31,10 +32,9 @@
 
 	ob_start();
 
-		$core = new core(); 
+		$core = new core();
 		$core->start($_GET);
 		$template = $core->estrutura_pedida('principal');
-
 		$saida = ob_get_contents();
 
 	ob_end_clean();

@@ -36,23 +36,29 @@
             }
 
             public static function verificarArquivo($arquivo,$tipo){
-                  if ($tipo == 'imagem') {
-                        if ($arquivo['type'] == 'image/jpeg' || $arquivo['type'] == 'image/png') 
-                        {
-                              return true;
-                        }else 
-                        {
-                              return false;
-                        }
-                  }elseif ($tipo == 'video') 
+                  if ($arquivo['error'] != 4 && empty($tipo)) 
                   {
-                        if ($arquivo['type'] == 'video/x-ms-wnv' || $arquivo['type'] == 'video/mp4' || $arquivo['type'] == 'video/ogg' || $arquivo['type'] == 'video/webm' && $arquivo['size'] <= 300000000)
+                        if ($tipo == 'imagem') {
+                              if ($arquivo['type'] == 'image/jpeg' || $arquivo['type'] == 'image/png') 
+                              {
+                                    return true;
+                              }else 
+                              {
+                                    return false;
+                              }
+                        }elseif ($tipo == 'video') 
                         {
-                              return true;
-                        }else
-                        {
-                              return false;
-                        }
+                              if ($arquivo['type'] == 'video/x-ms-wnv' || $arquivo['type'] == 'video/mp4' || $arquivo['type'] == 'video/ogg' || $arquivo['type'] == 'video/webm' && $arquivo['size'] <= 300000000)
+                              {
+                                    return true;
+                              }else
+                              {
+                                    return false;
+                              }
+                        }     
+                  }else
+                  {
+                        return true;
                   }
             }
       }
@@ -96,23 +102,39 @@
             {
                   $conexao = conexao::pegandoConexao();
 
-                  if (!empty($dadosInsercao['titulo']) && !empty($idSoftware) && !empty($arquivo))
+                  if (!empty($dadosInsercao['titulo']) && !empty($idSoftware) && !empty($_POST['urlYoutube']) || $arquivo['error'] != 4)
                   {
-                        if (self::verificarArquivo($arquivo,'video') != false) {
-                              $nomeArquivoBd = insercaoDados::mandarArquivo($arquivo,'midias/','video');
+                        if (self::verificarArquivo($arquivo,'video') != false) 
+                        {
+                              if (!empty($_POST['urlYoutube']) && $arquivo['error'] != 4) 
+                              {
+                                    helper::mensagem('artigoErro','Não se pode carregar um video local e exportado ao mesmo tempo','danger');
+                              }else
+                              {
+                                    // Utilizando prepared statement para prevenir SQL injection 
+                                    $stmt = $conexao->prepare("INSERT INTO artigo (nome, video, softwarePertecente, urlYoutube, estado) VALUES (:nome, :video, :software,:urlYoutube,:estado)");
+                                    $stmt->bindValue(':nome',$dadosInsercao['titulo']);
 
-                              // Utilizando prepared statement para prevenir SQL injection 
-                              $stmt = $conexao->prepare("INSERT INTO artigo (nome, video, softwarePertecente,estado) VALUES (:nome, :video, :software,:estado)");
-                              $stmt->bindValue(':nome',$dadosInsercao['titulo']);
-                              $stmt->bindValue(':video',$nomeArquivoBd);
-                              $stmt->bindValue(':software',$idSoftware);
-                              $stmt->bindValue(':estado',1);
+                                    if ($arquivo['error'] != 4) 
+                                    {
+                                          $nomeArquivoBd = insercaoDados::mandarArquivo($arquivo,'midias/','video');
+                                          $stmt->bindValue(':video',$nomeArquivoBd);
+                                          $stmt->bindValue(':urlYoutube',0);     
+                                    }elseif(!empty($_POST['urlYoutube']))
+                                    {
+                                          $stmt->bindValue(':video',$_POST['urlYoutube']);
+                                          $stmt->bindValue(':urlYoutube',1);
+                                    }
 
-                              //$id = $conexao->lastInsertId();
+                                    $stmt->bindValue(':software',$idSoftware);
+                                    $stmt->bindValue(':estado',1);
 
-                              $stmt->execute();
+                                    //$id = $conexao->lastInsertId();
 
-                              helper::mensagem('artigoInserido','O artigo foi cadastrado com sucesso');     
+                                    $stmt->execute();
+
+                                    helper::mensagem('artigoInserido','O artigo foi cadastrado com sucesso');
+                              }
                         }else 
                         {
                               helper::mensagem('artigoErro','O arquivo deve ser de tipo video e não deve ser muito grande limite de 300MB','danger');
